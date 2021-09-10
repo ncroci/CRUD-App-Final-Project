@@ -16,35 +16,54 @@ class Task {
     }
 }
 
-// fetch('https://crudcrud.com/api/b90ca1ec7c0544f288a959f9f5d2ce87/todos', {
-//   headers: { "Content-Type": "application/json; charset=utf-8" },
-//   method: 'POST',
-//   body: JSON.stringify({
-//     name: 'Name',
-//     date: 'Date Test',
-//   })
-// })
-// .then(response => response.json())
-// .then(data => console.log(data))
 
 class ListService {
-    static url = 'https://crudcrud.com/api/b90ca1ec7c0544f288a959f9f5d2ce87/todos';
+    static url = 'https://crudcrud.com/api/b90ca1ec7c0544f288a959f9f5d2ce87/lists';
 
-    static getAllLists() {
-        return $.get(this.url); 
-    }
-
-    static getList(id) {
-        return $.get(this.url + `/${id}`);
-    }
-
-    static createList(list) { 
-        return $.post(this.url, list);
-    }
-
-    static updateList(list) {
+    // Read in CRUD 
+    static getAllLists() {                      // WORKING
+        // console.log("getAllLists Method");
         return $.ajax({
-            url: this.url + `/${list._id}`, 
+            url: this.url,
+            dataType: 'json',
+            data: JSON.stringify(),
+            contentType: 'application/json',
+            type: 'GET'
+        }); 
+    }
+    
+    // Read in CRUD
+    static getList(list) {                      // WORKING
+        // console.log("getList Method");
+        // console.log(list);
+        return $.ajax({
+            url: this.url,
+            dataType: 'json',
+            data: JSON.stringify(list),
+            contentType: 'application/json',
+            type: 'GET'
+        });
+    }
+
+    //Create in CRUD
+    static createList(list) {                   // WORKING
+        // console.log("createList method")
+        // console.log(list);
+        // console.log(this.url);
+        return $.ajax({
+            url: this.url,
+            dataType: 'json',
+            data: JSON.stringify(list),
+            contentType: 'application/json',
+            type: 'POST'
+        }); 
+    }
+
+    //Update in CRUD
+    static updateList(list) {
+        console.log("updateList Working")
+        return $.ajax({
+            url: this.url, 
             dataType: 'json',
             data: JSON.stringify(list),
             contentType: 'application/json',
@@ -52,9 +71,15 @@ class ListService {
         }); 
     }
 
+    //Delete in CRUD
     static deleteList(id) {
+        console.log("inside of ListService-deleteList")
+        console.log(id);
         return $.ajax({
-            url: this.url + `/${id}`,
+            url: this.url,
+            dataType: 'json',
+            data: JSON.stringify(id),
+            contentType: 'application/json',
             type: 'DELETE'
         });
     }
@@ -64,6 +89,7 @@ class DOMManager {
     static lists;
 
     static getAllLists() {
+        // console.log("DOMManager-getAllLists Woking");
         ListService.getAllLists().then(lists => this.render(lists));
     }
 
@@ -76,6 +102,8 @@ class DOMManager {
     }
 
     static deleteList(id) {
+        console.log("inside of DOMManager-deleteList")
+        console.log(id);
         ListService.deleteList(id)
             .then(() => {
                 return ListService.getAllLists();
@@ -131,7 +159,7 @@ class DOMManager {
                                     <input type="text" id="${list._id}-task-name" class="form-control" placeholder="Task Name">
                                 </div>
                                 <div class="col-sm">
-                                    <input type="text" id="${list._id}-task-date" class="form-control" placeholder="Task Date">
+                                    <input type="date" id="${list._id}-task-date" class="form-control" placeholder="Task Date">
                                 </div>
                             </div>
                             <button id="${list._id}-new-task" onclick="DOMManager.addTask('${list._id}')" class="btn btn-primary form-control"> Add</button>
