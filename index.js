@@ -51,7 +51,7 @@ class ListService {
         // console.log(list);
         // console.log(this.url);
         return $.ajax({
-            url: this.url,
+            url: this.url, 
             dataType: 'json',
             data: JSON.stringify(list),
             contentType: 'application/json',
@@ -62,8 +62,9 @@ class ListService {
     //Update in CRUD
     static updateList(list) {
         console.log("updateList Working")
+        console.log(list);
         return $.ajax({
-            url: this.url, 
+            url: this.url,
             dataType: 'json',
             data: JSON.stringify(list),
             contentType: 'application/json',
@@ -76,7 +77,7 @@ class ListService {
         console.log("inside of ListService-deleteList")
         console.log(id);
         return $.ajax({
-            url: this.url,
+            url: this.url + "/" + id,
             dataType: 'json',
             data: JSON.stringify(id),
             contentType: 'application/json',
@@ -102,8 +103,8 @@ class DOMManager {
     }
 
     static deleteList(id) {
-        console.log("inside of DOMManager-deleteList")
-        console.log(id);
+        // console.log("inside of DOMManager-deleteList")
+        // console.log(id);
         ListService.deleteList(id)
             .then(() => {
                 return ListService.getAllLists();
