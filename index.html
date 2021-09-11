@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do App</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="container">
-    <div id="new-list" class="jumbotron">
-        <h2>New List</h2>
-        <input type="text" id="new-list-name" class="form-control"> <br>
-        <button id="create-new-list" class="btn btn-primary form-control">Create-new-list</button>
+    <div id="heading" class="col-sm-12">
+        <h1>To-Do List</h1>
+
+    </div><br>
+    <div id="new-list" class="col-sm-3">
+        <input type="text" id="new-list-name" class="form-control" placeholder="New List"> <br>
+        <button id="create-new-list" class="btn btn-primary form-control">Create New List</button>
     </div>
 
-    <div id="app">
+
+
+
+    <div id="app" class="col-sm-7">
 
     </div>
-    
+
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="index.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,28 @@
+.container {
+    background-color: aliceblue;
+}
+
+#app {
+    float: right;
+}
+
+#heading {
+    text-align: center;
+    height: 50px;
+    color: white;
+    background-color: #0e6dfd;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#new-list {
+    position: fixed;
+}
+
+h2 {
+    float: left;
+}
+
+.btn-danger {
+    float: right;
+}
