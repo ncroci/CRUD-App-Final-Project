@@ -60,7 +60,10 @@ class ListService {
         return $.ajax({
             url: this.url,
             dataType: 'json',
-            data: JSON.stringify(list),
+            data: JSON.stringify({
+                name: name,
+                tasks: tasks,
+            }),
             contentType: 'application/json',
             type: 'PUT'
         }); 
