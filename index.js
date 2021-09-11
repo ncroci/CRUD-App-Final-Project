@@ -22,7 +22,6 @@ class ListService {
 
     // Read in CRUD 
     static getAllLists() {                      // WORKING
-        // console.log("getAllLists Method");
         return $.ajax({
             url: this.url,
             dataType: 'json',
@@ -34,8 +33,6 @@ class ListService {
     
     // Read in CRUD
     static getList(list) {                      // WORKING
-        // console.log("getList Method");
-        // console.log(list);
         return $.ajax({
             url: this.url,
             dataType: 'json',
@@ -47,9 +44,6 @@ class ListService {
 
     //Create in CRUD
     static createList(list) {                   // WORKING
-        // console.log("createList method")
-        // console.log(list);
-        // console.log(this.url);
         return $.ajax({
             url: this.url, 
             dataType: 'json',
@@ -61,8 +55,8 @@ class ListService {
 
     //Update in CRUD
     static updateList(list) {
-        console.log("updateList Working")
-        console.log(list);
+        console.log("Inside of ListService-updateList")
+        // console.log(list);
         return $.ajax({
             url: this.url,
             dataType: 'json',
@@ -73,9 +67,7 @@ class ListService {
     }
 
     //Delete in CRUD
-    static deleteList(id) {
-        console.log("inside of ListService-deleteList")
-        console.log(id);
+    static deleteList(id) {                     // WORKING
         return $.ajax({
             url: this.url + "/" + id,
             dataType: 'json',
@@ -90,7 +82,6 @@ class DOMManager {
     static lists;
 
     static getAllLists() {
-        // console.log("DOMManager-getAllLists Woking");
         ListService.getAllLists().then(lists => this.render(lists));
     }
 
@@ -103,8 +94,6 @@ class DOMManager {
     }
 
     static deleteList(id) {
-        // console.log("inside of DOMManager-deleteList")
-        // console.log(id);
         ListService.deleteList(id)
             .then(() => {
                 return ListService.getAllLists();
